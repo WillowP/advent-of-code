@@ -1,4 +1,6 @@
-arr = ["forward 2",
+import functools
+
+inp = ["forward 2",
 "forward 5",
 "forward 5",
 "down 4",
@@ -999,4 +1001,20 @@ arr = ["forward 2",
 "up 3",
 "forward 6"]
 
-# Woops, I deleted my solution
+split = map(lambda el: [el.split(" ")[0], int(el.split(" ")[1])], inp)
+
+a = 0
+h = 0
+d = 0
+
+for el in split:
+	command, val = el
+	if command == "up":
+		a -= val
+	if command == "down":
+		a += val
+	if command == "forward":
+		h += val
+		d += a * val
+
+print(h * d)
